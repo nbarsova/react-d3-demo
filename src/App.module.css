@@ -1,0 +1,19 @@
+.app {
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  background-color: deepskyblue;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+}
