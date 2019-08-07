@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import {ZoomBehavior} from "d3";
 
-export default class D3Graph {
+export default class ZoomingGraph {
 
     private rootNode: HTMLDivElement | undefined;
     private d3graph: d3.Selection <any, any, any, any>|undefined;
@@ -26,11 +26,9 @@ export default class D3Graph {
     private xLineFunction: any;
     private yLineFunction: any;
     private xAxis: any;
-    private yAxis: any;
-    private zoomBehavior: ZoomBehavior<Element, any> | undefined;
+     private zoomBehavior: ZoomBehavior<Element, any> | undefined;
     private line: any;
     private xAxisG: any;
-    private yAxisG: any;
     private xDomain: number[]=[0,1];
     private xRange: number[]=[0, 100];
     private invisibleGraph: any;

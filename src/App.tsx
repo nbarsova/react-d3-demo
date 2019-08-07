@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from './App.module.css';
-import {ZoomingGraph} from "./ZoomingGraph";
-import {BarChartGraph} from "./BarChartGraph";
+import {Zooming} from "./Graphs/Zooming";
+import {BarChartGraph} from "./Graphs/BarChartGraph";
 
 interface IAppState {
     selectedComponentIndex: number;
 }
 
 class App extends React.Component <any, IAppState> {
-    private graphs: any = [<ZoomingGraph componentName="Zooming graph"/>,
-        <BarChartGraph componentName="Bar chart"/>];
+    private graphs: any = [<BarChartGraph componentName="Bar chart"/>,
+         <Zooming componentName="Zooming graph"/>,
+    <Scatterplot componentName="Scatterplot"/>];
 
     constructor(props: any) {
         super(props);
@@ -30,9 +31,8 @@ class App extends React.Component <any, IAppState> {
     };
 
     private renderGraph = (item: React.Component, index: number) => {
-        return (<div key={"component"+index}
-                     style={{visibility: index === this.state.selectedComponentIndex ? "visible" : "hidden"}}>
-            {item}
+        return (<div key={"component"+index}>
+            {index === this.state.selectedComponentIndex ? item: null}
         </div>)
     }
 

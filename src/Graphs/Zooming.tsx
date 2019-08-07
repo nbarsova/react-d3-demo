@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import D3Graph from "./D3Graph";
+import ZoomingGraph from "./ZoomingGraph";
 
-export class ZoomingGraph extends Component <any, any> {
+export class Zooming extends Component <any, any> {
 
     private graphRootNode!: HTMLDivElement;
-    private d3Graph: D3Graph = new D3Graph();
+    private d3Graph: ZoomingGraph = new ZoomingGraph();
 
     private setRoot(componentNode: HTMLDivElement) {
         this.graphRootNode = componentNode;
