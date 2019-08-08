@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './App.module.css';
 import {Zooming} from "./Graphs/Zooming";
 import {BarChartGraph} from "./Graphs/BarChartGraph";
+import Scatterplot from "./Graphs/Scatterplot";
 
 interface IAppState {
     selectedComponentIndex: number;
