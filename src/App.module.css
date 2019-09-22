@@ -12,8 +12,14 @@
 
 .button {
   cursor: pointer;
-  background-color: deepskyblue;
+  background-color: dodgerblue;
+  opacity: 0.7;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
+}
+
+.selectedButton {
+  composes: button;
+  opacity: 1;
 }

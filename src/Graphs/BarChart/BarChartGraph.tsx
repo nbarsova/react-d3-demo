@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import BarChart from "./BarChart";
+import styles from "./BarChart.module.css"
 
 export class BarChartGraph extends React.Component <any, any> {
 
@@ -16,15 +17,10 @@ export class BarChartGraph extends React.Component <any, any> {
 
     public render = () => {
         return (<div>
-            <div id="graphContainer"
-        ref={this.setRoot.bind(this)}
-        style={{
-            position: 'absolute',
-                width: "100%",
-                height: "90%",
-                left: 0
-        }}
-        />
+            <div className={styles.graphContainer}
+                ref={this.setRoot.bind(this)}/>
+            <div className={styles.yAxisCaption}><p>Gross Domestic Product, $</p></div>
+            <div className={styles.graphTitle}><p>United Stated GDP</p></div>
         </div>);
     }
 }

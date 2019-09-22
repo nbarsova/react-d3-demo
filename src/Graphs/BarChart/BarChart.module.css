@@ -1,0 +1,22 @@
+.graphContainer {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+}
+
+.graphTitle {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.yAxisCaption {
+    position: absolute;
+    top: 22%;
+    left: -5%;
+    transform: rotate(-90deg);
+}

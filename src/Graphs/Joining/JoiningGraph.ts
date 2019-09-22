@@ -73,7 +73,8 @@ export default class JoiningGraph {
             let lineRects = this.graphArea.selectAll("g")
                 .data(data);
 
-            lineRects.enter().append("g")
+            lineRects.enter()
+                .append("g")
                 .merge(lineRects)
                 .attr("id", (d: any) => d.name)
                 .style("width", this.width)

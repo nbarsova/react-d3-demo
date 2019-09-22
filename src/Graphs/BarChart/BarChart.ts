@@ -36,24 +36,6 @@ export default class barChart {
             .attr("height", this.height);
 
         this.d3graph = svg.append("g");
-
-        this.overlay = svg.append('div')
-            .attr("id", 'overlay')
-            .style("position", "absolute")
-            .style("pointer-events", "none")
-            .attr("height", 40)
-            .attr("width", 100)
-            .style("background", "#fff")
-            .style('opacity', 0);
-
-        this.tooltip = svg.append("div")
-            .attr("id", "tooltip")
-            .style("position", "absolute")
-            .attr("height", 40)
-            .attr("width", 100)
-            .style("opacity", 0);
-
-
     }
 
     private renderGraph = () => {
@@ -63,26 +45,6 @@ export default class barChart {
 
         let dateAccessor = this.chartData && this.chartData.map(function(item: any) {
             return new Date(item[0]);
-        });
-
-        let dateformatter = this.chartData.map((item: any) => {
-            var quarter;
-            var temp = item[0].substring(5, 7);
-
-            if(temp === '01') {
-                quarter = '1';
-            }
-            else if (temp === '04'){
-                quarter = '2';
-            }
-            else if(temp === '07') {
-                quarter = '3';
-            }
-            else if(temp ==='10') {
-                quarter = '4';
-            }
-
-            return item[0].substring(0, 4) + '-' + quarter
         });
 
         let gdp = this.chartData.map((item: any)=> {
@@ -113,6 +75,7 @@ export default class barChart {
             this.d3graph.append("g")
                 .call(yAxis);
 
+
             let xAxis = d3.axisBottom(xLineFunction);
             this.d3graph.append("g")
                 .attr("transform", "translate(0, " + (this.height - 50) + ")")
@@ -131,32 +94,6 @@ export default class barChart {
                 .attr("y", (d: any) => {
                     return yLineFunction(d[1]);
                 })
-                .on('mouseover', (d:any, i:any) => {
-                    this.overlay.transition()
-                        .duration(0)
-                        .style('height', d + 'px')
-                        .style('opacity', .9)
-                        .style('left', (i * barWidth) + 0 + 'px')
-                        .style('top', Number(this.height) - d + 'px')
-                        .style('transform', 'translateX(60px)');
-                    this.tooltip.transition()
-                        .duration(200)
-                        .style('opacity', .9);
-                    this.tooltip.html(dateformatter[i]+'<br>'
-                        +gdp[i]+"$")
-                        .attr('data-date', this.chartData[i][0])
-                        .style('left', (i * barWidth) + 30 + 'px')
-                        .style('top', Number(this.height) + 100 + 'px')
-                        .style('transform', 'translateX(60px)');
-                })
-                .on('mouseout', (d) => {
-                    this.tooltip.transition()
-                        .duration(200)
-                        .style('opacity', 0);
-                    this.overlay.transition()
-                        .duration(200)
-                        .style('opacity', 0);
-                })
                 .attr('data-date', (d, i) => {
                     return this.chartData[i][0]
                 })
@@ -164,9 +101,7 @@ export default class barChart {
                     return d[1]
                 })
                 .style("fill", "darkred");
-
-
-        }
+       }
 
     }
 }

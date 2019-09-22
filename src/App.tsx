@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './App.module.css';
-import {Zooming} from "./Graphs/Zooming";
-import {BarChartGraph} from "./Graphs/BarChartGraph";
-import Scatterplot from "./Graphs/Scatterplot";
-import {Joining} from "./Graphs/Joining";
+import {Zooming} from "./Graphs/Zooming/Zooming";
+import {BarChartGraph} from "./Graphs/BarChart/BarChartGraph";
+import Scatterplot from "./Graphs/Scatterplot/Scatterplot";
+import {Joining} from "./Graphs/Joining/Joining";
 
 interface IAppState {
     selectedComponentIndex: number;
@@ -11,13 +11,13 @@ interface IAppState {
 
 class App extends React.Component <any, IAppState> {
     private graphs: any = [<BarChartGraph componentName="Bar chart"/>,
-         <Zooming componentName="Zooming graph"/>,
-    <Scatterplot componentName="Scatterplot"/>,
-    <Joining componentName="Joining data"/>];
+        <Scatterplot componentName="Scatterplot"/>,
+        <Zooming componentName="Zooming graph"/>,
+        <Joining componentName="Joining data"/>];
 
     constructor(props: any) {
         super(props);
-        this.state={
+        this.state = {
             selectedComponentIndex: 0
         }
     }
@@ -25,17 +25,16 @@ class App extends React.Component <any, IAppState> {
 
     private renderButton = (item: any, index: number) => {
 
-        return (<div key={index} className={styles.button} onClick={() => {
-            console.log("Clicked on "+index);
+        return (<div key={index} className={index === this.state.selectedComponentIndex ? styles.selectedButton : styles.button} onClick={() => {
             this.setState({selectedComponentIndex: index});
         }}>
-           {item.props.componentName}
+            {item.props.componentName}
         </div>)
     };
 
     private renderGraph = (item: React.Component, index: number) => {
-        return (<div key={"component"+index}>
-            {index === this.state.selectedComponentIndex ? item: null}
+        return (<div key={"component" + index}>
+            {index === this.state.selectedComponentIndex ? item : null}
         </div>)
     }
 
