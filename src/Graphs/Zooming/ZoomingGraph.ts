@@ -26,7 +26,7 @@ export default class ZoomingGraph {
     private xLineFunction: any;
     private yLineFunction: any;
     private xAxis: any;
-     private zoomBehavior: ZoomBehavior<Element, any> | undefined;
+    private zoomBehavior: ZoomBehavior<Element, any> | undefined;
     private line: any;
     private xAxisG: any;
     private xDomain: number[]=[0,1];
