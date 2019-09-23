@@ -43,8 +43,8 @@ export default class JoiningGraph {
         let yRange = [this.height - 20, 10];
         this.yLineFunction = d3.scaleLinear().domain(yDomain).range(yRange);
 
-        this.xDomain = [0, 200];
-        this.xRange = [0, this.width];
+        this.xDomain = [0, 24];
+        this.xRange = [50, this.width];
         this.xLineFunction = d3.scaleLinear().domain(this.xDomain).range(this.xRange);
 
         this.xAxis = d3.axisTop(this.xLineFunction);
@@ -56,7 +56,6 @@ export default class JoiningGraph {
     }
 
     changeData(data: any []) {
-        console.log(data);
         this.data = data;
 
         if (this.graphArea) {
@@ -104,54 +103,3 @@ export default class JoiningGraph {
         }
     }
 }
-
-
-/*
-This works, but for individual rectangles
-    let lineNames = this.graphArea.selectAll('text')
-                .data(data)
-                .join("text")
-                .text((d: any) => d.name)
-                .attr("x", 0)
-                .attr("y", (d: any, i: number) => 40 + i * 50)
-                .attr("class", "lineLabel");
-
-            let lineRects = this.graphArea.selectAll("rect")
-                .data(data)
-                .join("rect")
-                .attr("x", (d: any)=>60+d.pos)
-                .attr("y", (d: any, i: number)=>25+i*50)
-                .attr("height", 15)
-                .attr("width", 15)
-                .style("fill", (d: any)=> d.color);
-
- */
-
-/* this worked, but the rectangles for same name values overlayed
-            const lines = this.d3graph
-                .selectAll('.drop-line')
-                .data(data);
-
-
-            let lineContainers = lines.enter()
-                // @ts-ignore
-                .merge(lines)
-                .append("g")
-                .attr("class", "drop-line");
-
-            lineContainers.append("text")
-                .attr("x", 0)
-                .attr("y", (d: any, i:number)=>40+i*50)
-                .text((d: any)=>d.name);
-
-
-            lineContainers.append("rect")
-                .attr("x", 60)
-                .attr("y", (d: any, i: number)=>25+i*50)
-                .attr("height", 15)
-                .attr("width", (d: any)=>d.length)
-                .style("fill", (d: any)=> d.color);
-
-            lines.exit().remove();
-
-             */

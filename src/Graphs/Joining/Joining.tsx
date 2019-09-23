@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import JoiningGraph from "./JoiningGraph";
+import styles from "./Joining.module.css";
 
 export class Joining extends Component <any, any> {
 
     private graphRootNode!: HTMLDivElement;
     private d3Graph: JoiningGraph = new JoiningGraph();
     private lineRecreationInterval: any;
+
+    constructor (props: any) {
+        super(props);
+        this.state={
+            day: new Date(2019, 0, 1)
+        }
+    }
 
     private setRoot(componentNode: HTMLDivElement) {
         this.graphRootNode = componentNode;
@@ -36,7 +44,7 @@ export class Joining extends Component <any, any> {
                 }
 
                 let newDataObj = {
-                    name: "name" + i,
+                    name: "User " + i,
                     dataPoints: dataPoints,
 
                 };
@@ -46,6 +54,11 @@ export class Joining extends Component <any, any> {
             data.splice(Math.floor(Math.random()*data.length), 1);
 
             this.d3Graph.changeData(data);
+            let newDate = this.state.day;
+            newDate.setDate(this.state.day.getDate()+1);
+            this.setState({
+                day: newDate
+            })
         }, 2000);
     }
 
@@ -58,24 +71,9 @@ export class Joining extends Component <any, any> {
         return (<div>
             <div id="graphContainer"
                  ref={this.setRoot.bind(this)}
-                 style={{
-                     position: 'absolute',
-                     width: "100%",
-                     height: "90%",
-                     left: 0
-                 }}
+                 className={styles.graph}
             />
-            <div style={{
-                position: 'absolute',
-                bottom: 20,
-                left: "50vw",
-                padding: 5,
-                borderRadius: 5,
-                backgroundColor: "lightblue",
-                cursor: "pointer"
-            }}
-                 onClick={() => clearInterval(this.lineRecreationInterval)}>stop
-            </div>
+            <div className={styles.graphTitle}>Activity for {this.state.day.toDateString()}</div>
         </div>);
     }
 }
