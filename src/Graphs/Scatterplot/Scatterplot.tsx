@@ -70,10 +70,10 @@ export default class Scatterplot extends React.Component <any, IPlotState> {
                 <p className={styles.legendCaption}>Legend</p>
                 <div className={styles.legendStr}>
                     <div className={styles.dopingCircle}/>
-                    <p>no doping allegations</p></div>
+                    <p>riders with doping allegations</p></div>
                 <div className={styles.legendStr}>
                     <div className={styles.noDopingCircle}/>
-                    <p>riders with doping allegations</p></div>
+                    <p>no doping allegations</p></div>
             </div>
         </div>);
     }
