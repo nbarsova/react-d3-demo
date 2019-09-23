@@ -6,7 +6,7 @@ Tasks from the freeCodeCamp data visualisation certification:
 2. Scatterplot visualization (https://learn.freecodecamp.org/data-visualization/data-visualization-projects/visualize-data-with-a-scatterplot-graph)
 
 And other visualization examples:
-3. Zooming graph with mouse and external zoom control
-4. Dynamic dataset changing visualization using selection merging.  
+3. Zooming graph with mouse and external zoom control, where the zoom works only in one dimension.
+4. Dynamic dataset changing visualization using selection merging (simple user daily activity timeline).
 
 You are free to use this examples and ask me questions.
