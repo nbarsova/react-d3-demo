@@ -85,23 +85,17 @@ export default class ZoomingGraph {
 
            this.invisibleGraph.call(this.zoomBehavior
                 .scaleExtent([1, 4])
+               .translateExtent([[0, Number.NEGATIVE_INFINITY],
+                   [this.width, Number.POSITIVE_INFINITY]])
                 .on("zoom", this.zoomed));
     }
 
     private zoomed = () => {
         if (this.d3graph) {
             console.log("zoomed", d3.event.transform, d3.zoomTransform(this.d3graph.node()));
-            //const newTransform=d3.zoomIdentity.translate(d3.event.transform.x, d3.event.transform.y)
-            //    .scale(d3.event.transform.k);
-            // let graphNode = this.d3graph.node();
-
-            // this.line.attr("transform", d3.event.transform);
-
-           // this.d3graph.selectAll('#old').remove();
 
             const oldGraphSelection = this.d3graph.selectAll('*');
                 oldGraphSelection.style("visibility", "hidden");
-                // oldGraphSelection.attr("id", "old");
 
             this.xLineFunction = d3.event.transform.rescaleX(
                 d3.scaleLinear()
@@ -123,29 +117,10 @@ export default class ZoomingGraph {
 
             this.d3graph.selectAll("old").remove()
 
-            /*this.yAxis = d3.axisLeft(this.yLineFunction);
-            this.yAxisG = this.d3graph.append("g")
-                .attr("transform", "translate(25,0)")
-                .call(this.yAxis); */
-
-            // this.yAxisG.call(this.yAxis.scale(d3.event.transform.rescaleY(d3.event.transform.y)));
-            // this.xAxisG.call(this.xAxis.scale(d3.event.transform.rescaleX(d3.event.transform.x)));
-
-            // d3.zoom().transform(this.d3graph, d3.event.transform);
-            /* this.line.selectAll("*").remove();
-            this.xLineFunction = d3.zoomTransform(this.d3graph.node()).rescaleX(this.xLineFunction);
-            this.line = this.d3graph.append("svg:path")
-                .data([this.data])
-                .attr("d", this.lineFunction)
-                .style("stroke", "#999999")
-                .style("stroke-width", "0.7px")
-                .style("fill", "transparent");
-        */
-
         }
     }
 
-    public externalZoomIn (zoomFactor: number) {
+    public externalZoom (zoomFactor: number) {
 
         if (this.d3graph) {
             this.zoomBehavior && this.zoomBehavior.scaleBy(this.invisibleGraph, zoomFactor);

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ZoomingGraph from "./ZoomingGraph";
+import styles from "./Zooming.module.css";
 
 export class Zooming extends Component <any, any> {
 
@@ -19,25 +20,18 @@ export class Zooming extends Component <any, any> {
         return (<div>
             <div id="graphContainer"
                  ref={this.setRoot.bind(this)}
-                 style={{
-                     position: 'absolute',
-                     width: "100%",
-                     height: "90%",
-                     left: 0
-                 }}
+                 className={styles.graph}
             />
-            <div onClick={()=> {
-                this.d3Graph.externalZoomIn(2);
-            }} style={{position: "absolute",
-                top: 0, right: 40,
-                backgroundColor: "gray",
-                fontWeight: 40, width: 40, cursor: "pointer"}}>+</div>
-            <div onClick={()=> {
-                this.d3Graph.externalZoomIn(1/2);
-            }} style={{position: "absolute",
-                top: 0, right: 10,
-                backgroundColor: "gray",
-                fontWeight: 40, width: 40, cursor: "pointer"}}>-</div>
+            <div className={styles.buttons}>
+                <div onClick={() => {
+                    this.d3Graph.externalZoom(2);
+                }} className={styles.zoomButton}>+
+                </div>
+                <div onClick={() => {
+                    this.d3Graph.externalZoom(1 / 2);
+                }} className={styles.zoomButton}>-
+                </div>
+            </div>
         </div>);
     }
 }
