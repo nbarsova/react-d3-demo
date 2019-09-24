@@ -9,4 +9,4 @@ And other visualization examples:
 3. Zooming graph with mouse and external zoom control, where the zoom works only in one dimension.
 4. Dynamic dataset changing visualization using selection merging (simple user daily activity timeline).
 
-You are free to use this examples and ask me questions.
+You are free to use these examples and ask me questions.
