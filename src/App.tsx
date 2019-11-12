@@ -4,6 +4,7 @@ import {Zooming} from "./Graphs/Zooming/Zooming";
 import {BarChartGraph} from "./Graphs/BarChart/BarChartGraph";
 import Scatterplot from "./Graphs/Scatterplot/Scatterplot";
 import {Joining} from "./Graphs/Joining/Joining";
+import {HeatMapGraph} from "./Graphs/HeatMap/HeatMapGraph";
 
 interface IAppState {
     selectedComponentIndex: number;
@@ -13,7 +14,8 @@ class App extends React.Component <any, IAppState> {
     private graphs: any = [<BarChartGraph componentName="Bar chart"/>,
         <Scatterplot componentName="Scatterplot"/>,
         <Zooming componentName="Zooming graph"/>,
-        <Joining componentName="Joining data"/>];
+        <Joining componentName="Joining data"/>,
+    <HeatMapGraph componentName="Heat Map"/>];
 
     constructor(props: any) {
         super(props);

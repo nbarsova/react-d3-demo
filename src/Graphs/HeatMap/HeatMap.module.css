@@ -1,0 +1,17 @@
+.graphContainer {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+}
+
+.toolTipShown {
+    width: 120px;
+    background-color: lightgrey;
+    border-radius: 3px;
+    position: absolute;
+}
+
+.tooltipHidden {
+    composes: toolTipShown;
+    visibility: hidden;
+}

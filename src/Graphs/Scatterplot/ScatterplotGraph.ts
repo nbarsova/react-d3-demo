@@ -17,7 +17,6 @@ export default class ScatterplotGraph {
             min,
             sec,
             0);
-        console.log(time, date);
 
         return date;
     }

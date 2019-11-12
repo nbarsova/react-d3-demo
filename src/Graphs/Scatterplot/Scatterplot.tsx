@@ -28,7 +28,7 @@ export default class Scatterplot extends React.Component <any, IPlotState> {
     }
 
     private onMouseOver(mouseX: number, mouseY: number, tooltip: any) {
-        console.log(tooltip);
+
         let content = tooltip.Name + ", place: " + tooltip.Place;
         if (tooltip.Doping) {
             content += ", " + tooltip.Doping;

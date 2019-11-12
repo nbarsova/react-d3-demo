@@ -15,7 +15,7 @@ export default class barChart {
     private tooltip: any;
     private overlay: any;
 
-    create(rootNode: HTMLDivElement) {
+    public create(rootNode: HTMLDivElement) {
         this.rootNode = rootNode;
         this.height = rootNode.clientHeight - 80;
         this.width = rootNode.clientWidth - 100;
