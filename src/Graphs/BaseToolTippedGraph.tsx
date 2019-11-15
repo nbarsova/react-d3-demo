@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import HeatMap from "./HeatMap";
 import styles from "./HeatMap.module.css";
+import {BaseGraph} from "./BaseGraph";
 
 interface IPlotState {
     toolTipLeft: number,
@@ -9,11 +9,9 @@ interface IPlotState {
     toolTipContent: string
 }
 
-export class HeatMapGraph extends React.Component <any, IPlotState> {
+export class BaseToolTippedGraph extends React.Component <any, IPlotState> {
 
     private graphRootNode!: HTMLDivElement;
-    private legendNode!: HTMLDivElement;
-    private chart: HeatMap = new HeatMap();
 
     constructor(props: any) {
         super(props);
@@ -29,30 +27,21 @@ export class HeatMapGraph extends React.Component <any, IPlotState> {
         this.graphRootNode = componentNode;
     }
 
-    private setLegendRoot(legendNode: HTMLDivElement) {
-        this.legendNode = legendNode;
-    }
-
     public componentDidMount(): void {
-        this.chart.create(this.graphRootNode,
+       /*  this.chart.create(this.graphRootNode,
             this.onMouseOver.bind(this),
-            this.onMouseOut.bind(this),
-            this.legendNode);
+            this.onMouseOut.bind(this)); */
     }
 
     public render = () => {
         return (<div>
-            <div className={styles.graphContainer}
-                 ref={this.setRoot.bind(this)}/>
+            <BaseGraph />
             <div className={this.state.toolTipStyle}
                  style={{
                      left: this.state.toolTipLeft,
                      top: this.state.toolTipTop
                  }}>{this.state.toolTipContent}</div>
-            <div className={styles.legend}
-                 ref={this.setLegendRoot.bind(this)}/>
-
-            </div>);
+        </div>);
     }
 
     private onMouseOver(mouseX: number, mouseY: number, content: string) {

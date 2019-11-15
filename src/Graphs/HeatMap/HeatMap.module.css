@@ -4,6 +4,12 @@
     position: absolute;
 }
 
+.legend {
+    height: 10%;
+    position: absolute;
+    top: 90%;
+}
+
 .toolTipShown {
     width: 120px;
     background-color: lightgrey;
