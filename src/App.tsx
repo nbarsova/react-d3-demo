@@ -1,10 +1,12 @@
 import React from 'react';
+// @ts-ignore
 import styles from './App.module.css';
 import {Zooming} from "./Graphs/Zooming/Zooming";
 import {BarChartGraph} from "./Graphs/BarChart/BarChartGraph";
 import Scatterplot from "./Graphs/Scatterplot/Scatterplot";
 import {Joining} from "./Graphs/Joining/Joining";
 import {HeatMapGraph} from "./Graphs/HeatMap/HeatMapGraph";
+import {Choropleth} from "./Graphs/ChoroplethGraph/Choropleth";
 
 interface IAppState {
     selectedComponentIndex: number;
@@ -15,7 +17,8 @@ class App extends React.Component <any, IAppState> {
         <Scatterplot componentName="Scatterplot"/>,
         <Zooming componentName="Zooming graph"/>,
         <Joining componentName="Joining data"/>,
-    <HeatMapGraph componentName="Heat Map"/>];
+    <HeatMapGraph componentName="Heat Map"/>,
+    <Choropleth componentName="Chotopleth graph"/>];
 
     constructor(props: any) {
         super(props);

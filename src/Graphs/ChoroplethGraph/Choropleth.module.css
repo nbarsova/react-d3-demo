@@ -1,0 +1,11 @@
+.map {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+}
+
+.counties {
+    fill: none;
+    stroke: blue;
+    stroke-linejoin: round;
+}

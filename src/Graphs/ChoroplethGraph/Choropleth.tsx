@@ -1,10 +1,11 @@
 import React from "react";
-import {BaseD3Graph} from "./BaseD3Graph";
+import {ChoroplethGraph} from "./ChoroplethGraph";
+import styles from "./Choropleth.module.css";
 
-export class BaseGraph extends React.Component <any, any> {
+export class Choropleth extends React.Component <any, any> {
 
     private graphRootNode!: HTMLDivElement;
-    private chart: BaseD3Graph = new BaseD3Graph();
+    private chart: ChoroplethGraph = new ChoroplethGraph();
 
     private setRoot(componentNode: HTMLDivElement) {
         this.graphRootNode = componentNode;
@@ -18,7 +19,7 @@ export class BaseGraph extends React.Component <any, any> {
 
     public render = () => {
         return (<div>
-            <div ref={this.setRoot.bind(this)}/>
+            <div className={styles.map} ref={this.setRoot.bind(this)}/>
         </div>);
     }
 }
